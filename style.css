@@ -39,6 +39,7 @@ table{
 th, td{
     border: 1px solid;
     text-align: center;
+    width: 100px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .enviar{
@@ -71,21 +72,26 @@ th, td{
     cursor: pointer;
 }
 .menosPeso{
-    background-color: rgb(113, 37, 113);
+    background-color: rgb(132, 106, 159);
 }
 .menosPeso:hover{
-    background-color: rgb(101, 22, 101);
+    background-color: rgb(155, 7, 155);
     cursor: pointer;
 }
 .maisPeso{
     background-color: rgb(228, 228, 74);
 }
 .maisPeso:hover{
-    background-color: rgb(228, 228, 36);
+    background-color: rgb(204, 204, 0);
     cursor: pointer;
 }
-.remMaiorIMC,.remMenorIMC,.enviar,.excluir,.menosPeso,.maisPeso{
+.remMaiorIMC,.remMenorIMC,.enviar{
     width: 100px;
     height: 50px;
     margin: 20px;
+}
+.excluir,.menosPeso,.maisPeso{
+    width: 80px;
+    height: 20px;
+    margin: 5px;
 }
