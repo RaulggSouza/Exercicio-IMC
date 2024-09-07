@@ -18,6 +18,7 @@ altura.addEventListener("input",() => {
     }
 })
 btnEnviar.addEventListener("click",() => {
+    let imc = peso.value/Math.pow(altura.value,2);
     if (checarNumero(peso.value) && checarNumero(altura.value)){
         let table = document.querySelector("table");
         let tr = document.createElement("tr");
@@ -28,9 +29,9 @@ btnEnviar.addEventListener("click",() => {
         let tdAltura = document.createElement("td")
         tdAltura.innerText = parseFloat(altura.value).toFixed(2);
         let tdImc = document.createElement("td")
-        tdImc.innerText = (peso.value/Math.pow(altura.value,2)).toFixed(2);
+        tdImc.innerText = imc.toFixed(2);
         let tdStatus = document.createElement("td")
-        tdStatus.innerText = nome.value;
+        tdStatus.innerHTML = definirStatus(imc);
         let tdOpcoes = document.createElement("td")
         tdOpcoes.innerHTML = "<div class='botoes'><button class='excluir'>Excluir</button><button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button></div>"
         tr.append(tdNome,tdPeso,tdAltura,tdImc,tdStatus,tdOpcoes);
@@ -38,7 +39,6 @@ btnEnviar.addEventListener("click",() => {
         nome.value = "";
         peso.value = "";
         altura.value = "";
-
     }
     else{
         alert("Valores inválidos");
@@ -47,5 +47,20 @@ btnEnviar.addEventListener("click",() => {
 function checarNumero(valor){
     if (valor > 0.00 && valor < 300.00){
         return true;
+    }
+}
+function definirStatus(imc){
+    if(imc < 18.5) {
+        return "<span class='magreza'>Magreza</span>";
+    }else if(imc < 25.0){
+        return "<span class='saudavel'>Saudável</span>";
+    }else if(imc < 30.0){
+        return "<span class='sobrepeso'>Sobrepeso</span>";
+    }else if(imc < 35.0){
+        return "<span class='obesidade1'>Obesidade I</span>";
+    }else if(imc < 40.0){
+        return "<span class='obesidade2'>Obesidade II</span>";
+    }else{
+        return "<span class='obesidade3'>Obesidade III</span>";
     }
 }
