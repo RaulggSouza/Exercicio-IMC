@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora de IMC</title>
+</head>
+<body>
+    <header><strong>CALCULADORA DE IMC</strong></header>
+    <main>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>IMC</th>
+                <th>Status</th>
+                <th>Opções</th>
+            </tr>
+        </table>
+    </main>
+    <aside>
+        <h1>Faça o novo cadastro: </h1>
+        <div class="info">
+            Nome: <input type="text">
+            Peso: <input type="number" max="300.00" min="0.00" step=".01" placeholder="0.00">
+            Altura: <input type="number" max="300.00" min="0.00" step=".01" placeholder="0.00">
+        </div>
+        <div class="botoes">
+            <button class="enviar">Enviar</button>
+            <button class="remMaiorIMC"><b>-</b> Maior IMC</button>
+            <button class="remMenorIMC"><b>-</b> Menor IMC</button>
+        </div>
+    </aside>
+    <script src="imc.js"></script>
+</body>
+</html>

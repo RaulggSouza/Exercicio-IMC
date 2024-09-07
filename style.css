@@ -1,0 +1,91 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 50px;
+}
+main{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+aside{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    float: right;
+    margin-right: 20px;
+    border: solid 1px;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.botoes{
+    display: inline-flex;
+}
+table{
+    border: 1px solid;
+    width: 800px;
+    margin-left: 150px;
+}
+
+th, td{
+    border: 1px solid;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.enviar{
+    background-color: lightblue;
+}
+.enviar:hover{
+    background-color: rgb(140, 204, 225);
+    cursor: pointer;
+}
+.remMaiorIMC{
+    background-color: lightgreen;
+}
+.remMaiorIMC:hover{
+    background-color: rgb(114, 238, 114);
+    cursor: pointer;
+}
+.remMenorIMC{
+    background-color: lightcoral;   
+}
+.remMenorIMC:hover{
+    background-color: rgb(239, 111, 111); 
+    cursor: pointer;
+}
+
+.excluir{
+    background-color: rgb(239, 91, 91);
+}
+.excluir:hover{
+    background-color: rgb(237, 47, 47);
+    cursor: pointer;
+}
+.menosPeso{
+    background-color: rgb(113, 37, 113);
+}
+.menosPeso:hover{
+    background-color: rgb(101, 22, 101);
+    cursor: pointer;
+}
+.maisPeso{
+    background-color: rgb(228, 228, 74);
+}
+.maisPeso:hover{
+    background-color: rgb(228, 228, 36);
+    cursor: pointer;
+}
+.remMaiorIMC,.remMenorIMC,.enviar,.excluir,.menosPeso,.maisPeso{
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+}
