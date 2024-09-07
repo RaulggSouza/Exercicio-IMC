@@ -18,23 +18,16 @@ altura.addEventListener("input",() => {
     }
 })
 btnEnviar.addEventListener("click",() => {
-    let imc = peso.value/Math.pow(altura.value,2);
+    let imc = (peso.value/Math.pow(altura.value,2)).toFixed(2);
     if (checarNumero(peso.value) && checarNumero(altura.value)){
         let table = document.querySelector("table");
         let tr = document.createElement("tr");
-        let tdNome = document.createElement("td")
-        tdNome.innerText = nome.value;
-        let tdPeso = document.createElement("td")
-        tdPeso.innerText = parseFloat(peso.value).toFixed(2);
-        let tdAltura = document.createElement("td")
-        tdAltura.innerText = parseFloat(altura.value).toFixed(2);
-        let tdImc = document.createElement("td")
-        tdImc.innerText = imc.toFixed(2);
-        let tdStatus = document.createElement("td")
-        tdStatus.innerHTML = definirStatus(imc);
-        let tdOpcoes = document.createElement("td")
-        tdOpcoes.innerHTML = "<div class='botoes'><button class='excluir'>Excluir</button><button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button></div>"
-        tr.append(tdNome,tdPeso,tdAltura,tdImc,tdStatus,tdOpcoes);
+        let valores = Array(nome.value,parseFloat(peso.value).toFixed(2),parseFloat(altura.value).toFixed(2),imc,definirStatus(imc),"<div class='botoes'><button class='excluir'>Excluir</button><button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button></div>");
+        for (let val of valores){
+            let td = document.createElement("td");
+            td.innerHTML = val;
+            tr.append(td);
+        }
         table.append(tr);
         nome.value = "";
         peso.value = "";
