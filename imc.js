@@ -22,12 +22,22 @@ btnEnviar.addEventListener("click",() => {
     if (checarNumero(peso.value) && checarNumero(altura.value)){
         let table = document.querySelector("table");
         let tr = document.createElement("tr");
-        let valores = Array(nome.value,parseFloat(peso.value).toFixed(2),parseFloat(altura.value).toFixed(2),imc,definirStatus(imc),"<div class='botoes'><button class='excluir'>Excluir</button><button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button></div>");
+        let valores = Array(nome.value,parseFloat(peso.value).toFixed(2),parseFloat(altura.value).toFixed(2),imc,definirStatus(imc));
         for (let val of valores){
             let td = document.createElement("td");
             td.innerHTML = val;
             tr.append(td);
         }
+        let td = document.createElement("td");
+        let btnExcluir = document.createElement("button");
+        btnExcluir.setAttribute("class", "excluir");
+        btnExcluir.innerText = "Excluir";
+        btnExcluir.addEventListener("click", () => {
+            btnExcluir.parentElement.parentElement.remove();
+        })
+        td.innerHTML = "<button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button>";
+        td.style.display = "inline-flex";
+        tr.append(td);
         table.append(tr);
         nome.value = "";
         peso.value = "";
