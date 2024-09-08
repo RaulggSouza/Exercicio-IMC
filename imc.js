@@ -17,15 +17,54 @@ altura.addEventListener("input",() => {
         altura.value = "";
     }
 })
+
+btnRemMaior.addEventListener("click", () => {
+    let listaImcs = document.querySelectorAll(".imc");
+    console.log(listaImcs);
+    if (listaImcs.length > 0){
+        let maiorImc = parseFloat(listaImcs[0].innerHTML);
+        let indexImcRemovivel = 0;
+        for (let i = 0; i < listaImcs.length; i++){
+            if (parseFloat(listaImcs[i].innerHTML) >= maiorImc){
+                maiorImc = parseFloat(listaImcs[i].innerHTML);
+                indexImcRemovivel = i;
+            }
+        }
+        listaImcs[indexImcRemovivel].parentElement.remove();
+    }else{
+        alert("Sem registros na tabela");
+    }
+})
+
+btnRemMenor.addEventListener("click", () => {
+    let listaImcs = document.querySelectorAll(".imc");
+    if (listaImcs.length > 0){
+        let menorImc = listaImcs[0].innerHTML;
+        let indexImcRemovivel = 0;
+        for (let i = 0; i < listaImcs.length; i++){
+            if (listaImcs[i].innerHTML <= menorImc){
+                menorImc = listaImcs[i].innerHTML;
+                indexImcRemovivel = i;
+            }
+        }
+        listaImcs[indexImcRemovivel].parentElement.remove();
+    }else{
+        alert("Sem registros na tabela");
+    }
+})
+
 btnEnviar.addEventListener("click",() => {
     let imc = calcularImc(peso.value,altura.value);
     if (checarNumero(peso.value, "p") && checarNumero(altura.value, "a")){
         let table = document.querySelector("table");
         let tr = document.createElement("tr");
         let valores = Array(nome.value,parseFloat(peso.value).toFixed(2),parseFloat(altura.value).toFixed(2),imc,definirStatus(imc));
-        for (let val of valores){
+        for (let i = 0; i < valores.length; i++){
             let td = document.createElement("td");
-            td.innerHTML = val;
+            td.innerHTML = valores[i];
+            if (i == 3){
+                td.setAttribute("class","imc");
+            }
             tr.append(td);
         }
         let td = document.createElement("td");
@@ -61,6 +100,7 @@ btnEnviar.addEventListener("click",() => {
         alert("Valores inválidos");
     }
 })
+
 function checarNumero(valor, inputTestado){
     if (inputTestado == "p"){
         if (valor > 0.00 && valor <= 500.00){
@@ -87,7 +127,7 @@ function aumentarPeso(e){
     let valorPeso = parseFloat(linhaEscolhida.children[1].innerText);
     let valorAltura = parseFloat(linhaEscolhida.children[2].innerText);
     if (checarNumero(valorPeso+0.5, "p")){
-        linhaEscolhida.children[1].innerHTML = valorPeso+0.5;
+        linhaEscolhida.children[1].innerHTML = (valorPeso+0.5).toFixed(2);
     }else{
         alert("Peso máximo atingido");
     }
@@ -101,7 +141,7 @@ function diminuirPeso(e){
     let valorPeso = parseFloat(linhaEscolhida.children[1].innerText);
     let valorAltura = parseFloat(linhaEscolhida.children[2].innerText);
     if (checarNumero(valorPeso-0.5, "p")){
-        linhaEscolhida.children[1].innerHTML = valorPeso-0.5;
+        linhaEscolhida.children[1].innerHTML = (valorPeso-0.5).toFixed(2);
     }else{
         alert("Peso mínimo atingido");
     }
