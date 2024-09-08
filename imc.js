@@ -19,7 +19,7 @@ altura.addEventListener("input",() => {
 })
 btnEnviar.addEventListener("click",() => {
     let imc = (peso.value/Math.pow(altura.value,2)).toFixed(2);
-    if (checarNumero(peso.value) && checarNumero(altura.value)){
+    if (checarNumero(peso.value, "p") && checarNumero(altura.value, "a")){
         let table = document.querySelector("table");
         let tr = document.createElement("tr");
         let valores = Array(nome.value,parseFloat(peso.value).toFixed(2),parseFloat(altura.value).toFixed(2),imc,definirStatus(imc));
@@ -29,14 +29,29 @@ btnEnviar.addEventListener("click",() => {
             tr.append(td);
         }
         let td = document.createElement("td");
+        let div = document.createElement("div");
+        div.setAttribute("class", "botoes");
+        td.append(div);
         let btnExcluir = document.createElement("button");
         btnExcluir.setAttribute("class", "excluir");
         btnExcluir.innerText = "Excluir";
         btnExcluir.addEventListener("click", () => {
             btnExcluir.parentElement.parentElement.remove();
         })
-        td.innerHTML = "<button class='maisPeso'>+ Peso</button><button class='menosPeso'>- Peso</button>";
-        td.style.display = "inline-flex";
+        div.append(btnExcluir);
+
+        let btnMaisPeso = document.createElement("button");
+        btnMaisPeso.setAttribute("class","maisPeso");
+        btnMaisPeso.innerText = "+ Peso";
+        
+        div.append(btnMaisPeso);
+        
+        let btnMenosPeso = document.createElement("button");
+        btnMenosPeso.setAttribute("class","menosPeso");
+        btnMenosPeso.innerText = "- Peso";
+
+        div.append(btnMenosPeso);
+        
         tr.append(td);
         table.append(tr);
         nome.value = "";
@@ -47,8 +62,13 @@ btnEnviar.addEventListener("click",() => {
         alert("Valores inválidos");
     }
 })
-function checarNumero(valor){
-    if (valor > 0.00 && valor < 300.00){
+function checarNumero(valor, inputTestado){
+    if (inputTestado == "p"){
+        if (valor > 0.00 && valor < 300.00){
+            return true;
+        }
+    }
+    if (valor > 0.00 && valor < 3.00){
         return true;
     }
 }
