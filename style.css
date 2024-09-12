@@ -17,10 +17,17 @@ aside{
     justify-content: center;
     float: right;
     margin-right: 20px;
-    border: solid 1px;
     padding: 10px;
     width: 400px;
     height: auto;
+    background-image: linear-gradient(to bottom,rgb(2, 2, 104), rgb(66, 1, 66));
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+}
+aside input{
+    background-color: black;
+    color: white;
 }
 .info {
     display: flex;
@@ -43,10 +50,10 @@ th, td{
     font-family: Arial, Helvetica, sans-serif;
 }
 .enviar{
-    background-color: lightblue;
+    background-color: rgb(126, 155, 165);
 }
 .enviar:hover{
-    background-color: rgb(140, 204, 225);
+    background-color: rgb(95, 139, 153);
     cursor: pointer;
 }
 .remMaiorIMC{
@@ -89,6 +96,7 @@ th, td{
     width: 100px;
     height: 50px;
     margin: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
 }
 .excluir,.menosPeso,.maisPeso{
     font-weight: bold;
